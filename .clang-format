@@ -1,0 +1,14 @@
+---
+BasedOnStyle: LLVM
+AlignEscapedNewlines: Left
+IndentCaseLabels: true
+IndentWidth: 4
+AllowShortBlocksOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+ReflowComments: false
+SortIncludes: false
+ColumnLimit: 120
+...
