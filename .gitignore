@@ -416,3 +416,4 @@ dkms.conf
 telnet
 build/
 .vscode/
+/vi

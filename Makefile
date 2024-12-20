@@ -1,20 +1,22 @@
 TOP_DIR=$(shell pwd)
-CFLAGS+=-Os -Wall -Wextra -std=gnu99
-CFLAGS+=-Wformat -Werror=format-security
-# CFLAGS+=-Werror=format-nonliteral
-CFLAGS+=-Wno-error=unused-result
-CFLAGS+=-Wno-error=unused-but-set-variable
-CFLAGS+=-Werror=implicit-function-declaration
-CFLAGS+=-Wmissing-declarations -Wno-unused-parameter
+SRCDIR:=$(TOP_DIR)
+OBJDIR:=$(TOP_DIR)
+TARGET:=vi
+CC?=gcc
+
+CFLAGS+=-Os -Wall -Wextra
 CFLAGS+=-I$(TOP_DIR)/include
 
-all: vi
+SOURCES:=$(wildcard $(SRCDIR)/*.c $(SRCDIR)/libbb/*.c)
+OBJECTS:=$(patsubst %.c, %.o, $(SOURCES))
 
-vi: libbb/ptr_to_globals.o libbb/verror_msg.o libbb/xfuncs.o libbb/xfuncs_printf.o libbb/read_key.o libbb/read.o vi.o
+all: $(TARGET)
+
+$(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o $@
 
 clean:
-	rm -f *.o libbb/*.o vi
+	rm -f *.o libbb/*.o $(TARGET)
 
 lint:
 	find $(PRODUCT_DIR) -iname "*.[ch]" | xargs clang-format -i
