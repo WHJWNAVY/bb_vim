@@ -234,12 +234,9 @@ int bb_putchar(int ch) FAST_FUNC;
 // read.c
 ssize_t safe_read(int fd, void *buf, size_t count) FAST_FUNC;
 ssize_t full_read(int fd, void *buf, size_t len) FAST_FUNC;
-ssize_t read_close(int fd, void *buf, size_t size) FAST_FUNC;
-ssize_t open_read_close(const char *filename, void *buf, size_t size) FAST_FUNC;
 
 // read_key.c
 int64_t read_key(int fd, char *buffer, int timeout) FAST_FUNC;
-void read_key_ungets(char *buffer, const char *str, unsigned len) FAST_FUNC;
 char *last_char_is(const char *s, int c) FAST_FUNC;
 char *skip_whitespace(const char *s) FAST_FUNC;
 char *skip_non_whitespace(const char *s) FAST_FUNC;

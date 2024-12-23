@@ -350,14 +350,6 @@ got_all:
     goto start_over;
 }
 
-void FAST_FUNC read_key_ungets(char *buffer, const char *str, unsigned len) {
-    unsigned cur_len = (unsigned char)buffer[0];
-    if (len > KEYCODE_BUFFER_SIZE - 1 - cur_len)
-        len = KEYCODE_BUFFER_SIZE - 1 - cur_len;
-    memcpy(buffer + 1 + cur_len, str, len);
-    buffer[0] += len;
-}
-
 /* Find out if the last character of a string matches the one given */
 char *FAST_FUNC last_char_is(const char *s, int c) {
     if (!s[0])

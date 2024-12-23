@@ -58,19 +58,3 @@ ssize_t FAST_FUNC full_read(int fd, void *buf, size_t len) {
 
     return total;
 }
-
-ssize_t FAST_FUNC read_close(int fd, void *buf, size_t size) {
-    /*int e;*/
-    size = full_read(fd, buf, size);
-    /*e = errno;*/
-    close(fd);
-    /*errno = e;*/
-    return size;
-}
-
-ssize_t FAST_FUNC open_read_close(const char *filename, void *buf, size_t size) {
-    int fd = open(filename, O_RDONLY);
-    if (fd < 0)
-        return fd;
-    return read_close(fd, buf, size);
-}
